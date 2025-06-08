@@ -1,0 +1,20 @@
+{
+  "name": "pulumi-doks-webapp",
+  "version": "1.0.0",
+  "description": "Pulumi DigitalOcean Kubernetes Web Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "pulumi up",
+    "destroy": "pulumi destroy"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "^3.0.0",
+    "@pulumi/digitalocean": "^4.0.0",
+    "@pulumi/kubernetes": "^4.0.0",
+    "@pulumi/docker": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

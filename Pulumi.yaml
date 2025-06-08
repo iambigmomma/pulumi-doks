@@ -1,0 +1,8 @@
+name: pulumi-doks-webapp
+runtime: nodejs
+description: A web application deployed on DigitalOcean Kubernetes using Pulumi
+config:
+  customValue:
+    type: string
+    default: "abc123"
+    description: "Configurable value to display on the web page"
