@@ -1,22 +1,19 @@
-FROM node:18-alpine
+FROM node:12
 
-# Set working directory
-WORKDIR /app
+# Create app directory
+WORKDIR /usr/src/app
 
-# Copy package.json and install dependencies
-COPY app/package*.json ./
-RUN npm install --production
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
-# Copy application code
-COPY app/ .
+RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
 
-# Expose port
-EXPOSE 3000
+# Bundle app source
+COPY . .
 
-# Create non-root user
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nodejs -u 1001
-USER nodejs
-
-# Start application
-CMD ["npm", "start"] 
+EXPOSE 8080
+CMD [ "node", "server.js" ]

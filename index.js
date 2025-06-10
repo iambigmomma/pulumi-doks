@@ -8,7 +8,7 @@ const { WebAppComponent } = require("./components/webapp");
 const config = new pulumi.Config();
 const doConfig = new pulumi.Config("digitalocean");
 const customValue = config.get("customValue") || "abc123";
-const clusterName = "doks-webapp-cluster";
+const clusterName = "pulumi-doks";
 const appName = "webapp";
 
 // Create DigitalOcean Kubernetes cluster
@@ -73,7 +73,7 @@ const image = new docker.Image("webapp-image", {
 const webapp = new WebAppComponent("webapp", {
     image: image.imageName,
     customValue: customValue,
-    hostname: pulumi.interpolate`${clusterName}.example.com`, // You need to replace with actual domain
+    hostname: pulumi.interpolate`${clusterName}.isfusion.cloud`,
     replicas: 2,
     imagePullSecrets: [{ name: "registry-secret" }], // Add imagePullSecrets
 }, { 
